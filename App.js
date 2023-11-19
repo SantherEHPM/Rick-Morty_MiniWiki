@@ -4,8 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar 
+        animated={true}
+        backgroundColor="#6100fb"
+      />
+      <Text>Rick & Morty Wiki</Text>
     </View>
   );
 }
@@ -13,8 +16,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });

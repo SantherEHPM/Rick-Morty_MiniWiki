@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RyM_Wiki",
-    "slug": "RyM_Wiki",
+    "name": "RyM_MiniWiki",
+    "slug": "RyM_MiniWiki",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

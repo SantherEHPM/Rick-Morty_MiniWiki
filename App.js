@@ -1,23 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { StyleSheet, Text, View } from 'react-native'
+
+import * as global from './src/globals'
+
+//Vistas
+import Searcher from './src/views/Searcher'
+import Loading from './src/views/Loading'
+import Details from './src/views/Details'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar 
-        animated={true}
-        backgroundColor="#6100fb"
+    <View>
+      <StatusBar
+        backgroundColor={global.ColorsPalette.Primary2}
       />
-      <Text>Rick & Morty Wiki</Text>
+      <Searcher/>
+      <Text></Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});

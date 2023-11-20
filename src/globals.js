@@ -8,8 +8,6 @@ export let noFoundIcon = require('../assets/png/no_found.png')
 export let backArrow = require('../assets/png/left-arrow.png')
 export let body = {
     width:'100%',
-    height:'100%',
-    alignItems:'center',
-    justifyContent:'flex-end'
+    height:'100%'
 }
 export let ColorsPalette = ColorsPaletteImp

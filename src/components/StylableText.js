@@ -39,11 +39,14 @@ const  styles = StyleSheet.create({
     },
     white:{
         color:'#FFF'
+    },
+    underline:{
+        textDecorationLine:'underline'
     }
 })
 
 
-export default function StylableText({children,small,medium,large,opaque,white,style}){
+export default function StylableText({children,small,medium,large,opaque,white,underline,style}){
     const stylesAdd = [
         styles.default,
         small && styles.small,
@@ -51,6 +54,7 @@ export default function StylableText({children,small,medium,large,opaque,white,s
         large && styles.large,
         opaque && styles.opaque,
         white && styles.white,
+        underline && styles.underline,
         style
     ]
 

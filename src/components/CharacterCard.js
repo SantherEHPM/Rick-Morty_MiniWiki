@@ -1,5 +1,5 @@
 import React from 'react'
-import { View,Text,StyleSheet,Image} from 'react-native'
+import { View,Text,StyleSheet,Image, TouchableWithoutFeedback} from 'react-native'
 import * as global from '../globals'
 import StylableText from './StylableText'
 
@@ -24,14 +24,19 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function CharacterCard({source,name,id}){
+export default function CharacterCard({source,name,id,navigation}){
     return(
-        <View style={styles.container}>
+            <TouchableWithoutFeedback
+                onPress={()=>navigation.navigate('Details')}
+            >
+                <View style={styles.container}>
+                    
             <Image
                 style={styles.img}
                 source={source}
             />
             <StylableText style={styles.text} white>{name}</StylableText>
-        </View>
+                </View>
+            </TouchableWithoutFeedback>
     )
 }

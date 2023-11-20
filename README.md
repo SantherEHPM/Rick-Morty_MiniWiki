@@ -15,6 +15,8 @@ Proceso de desarrollo
 
 Dificultades y dudas:
 -Warning: Cannot connect Metro
+-No puede implementar NativeRouter por un problema de renderizado
+-Navegacion entre vistas desde componentes hijos de las mismas 
 
 Facilidades:
 -Creación de componentes

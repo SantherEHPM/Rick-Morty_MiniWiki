@@ -1,5 +1,5 @@
 import React from 'react'
-import { View,Text,StyleSheet,Image,Touchable} from 'react-native'
+import { View,Text,StyleSheet,Image,Touchable, TouchableWithoutFeedback} from 'react-native'
 import * as global from '../globals'
 
 const styles = StyleSheet.create({
@@ -14,13 +14,17 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ImageButton({source,size,style}){
+export default function ImageButton({source,size,style,onPress}){
     return(
-        <View style={[styles.container,{height:size,width:size},style]}>
-            <Image 
-                style={styles.image}
-                source={source}
-            />
-        </View>
+        <TouchableWithoutFeedback
+            onPress={onPress}
+        >
+            <View style={[styles.container,{height:size,width:size},style]}>
+                <Image 
+                    style={styles.image}
+                    source={source}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     )
 }

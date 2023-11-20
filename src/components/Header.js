@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
-import { View,Text,Image,StyleSheet} from 'react-native'
+import { View,Text,StyleSheet} from 'react-native'
+import ImageButton from './ImageButton'
 import Constants from 'expo-constants'
 import * as global from '../globals'
 
@@ -7,7 +8,6 @@ const styles = StyleSheet.create({
     container:{
         alignItems:'center',
         justifyContent:'center',
-        marginTop:Constants.statusBarHeight,
         minHeight:'15%',
         width:'100%',
         zIndex:5,
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     },
     titleIcon:{
         marginTop:10,
-        height:90,
+        height:150,
+        width:420,
         resizeMode:'contain'
     },
     back:{
@@ -27,18 +28,20 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function Header({children,back,style}){
+export default function Header({children,back,style,navigation}){
     return(
         <View style={[styles.container,style]}>
             {(back)&&
-                <Image
-                style={styles.back}
-                source={global.backArrow}
+                <ImageButton
+                    style={styles.back}
+                    source={global.backArrow}
+                    onPress={()=>navigation.back()}
                 />
             }
-            <Image
+            <ImageButton
                 style={styles.titleIcon}
                 source={global.wikiTittle}
+                onPress={()=>navigation.navigate('Home')}
             />
             {children}
         </View>

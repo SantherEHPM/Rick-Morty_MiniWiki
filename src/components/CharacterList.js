@@ -1,7 +1,7 @@
 import React from 'react'
 import { View,Text } from 'react-native'
 
-export default function CharacterList(){
+export default function CharacterList(navigation){
     return(
         <View>
 

@@ -14,17 +14,22 @@ Proceso de desarrollo
     2. Esquematizar vistas y componentes
     3. Enrutar vistas
     4. Integración de api
+    5. Busqueda y paginacion
 
 
 
 Dificultades y dudas:
--Warning: Cannot connect Metro
 -No puede implementar NativeRouter por un problema de renderizado
 -Navegacion entre vistas desde componentes hijos de las mismas 
+-Organizacion de codigo
+-Comentar de manera inmediata
+-Planeacion de versiones
 
 Facilidades:
 -Creación de componentes
+-Consumo de api
+
 
 Aprendizaje:
--Hook useEffect
+-Hook useEffect, useContext
 

@@ -2,6 +2,7 @@ import React, { Children } from 'react'
 import { View,Text,StyleSheet } from 'react-native'
 import * as global from '../general/globals'
 import StylableText from './StylableText'
+import { TouchableWithoutFeedback} from 'react-native-web'
 
 const styles = StyleSheet.create({
     default:{
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function StylableButton({full,style,children}){
+export default function StylableButton({onPress,full,style,children}){
     const stylesAdd = [
         styles.default,
         full && styles.full,
@@ -26,8 +27,10 @@ export default function StylableButton({full,style,children}){
     ]
 
     return(
+        <TouchableWithoutFeedback onPress={onPress}>
         <StylableText style={stylesAdd} medium>
             {children}
         </StylableText>
+        </TouchableWithoutFeedback>
     )
 }

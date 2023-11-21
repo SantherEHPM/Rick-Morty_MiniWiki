@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
     },
     titleIcon:{
         marginTop:10,
-        height:150,
-        width:420,
+        height:120,
+        width:220,
+        padding:0,
         resizeMode:'contain'
     },
     back:{
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
 export default function Header({children,back,style}){
 
     
-    const {navigator} = useAPIContext();
+    const {navigator,reseting} = useAPIContext();
 
 
     return(
@@ -41,13 +42,16 @@ export default function Header({children,back,style}){
                 <ImageButton
                     style={styles.back}
                     source={global.backArrow}
-                    onPress={()=>navigator.back()}
+                    onPress={()=>navigator.goBack()}
                 />
             }
             <ImageButton
                 style={styles.titleIcon}
                 source={global.wikiTittle}
-                onPress={()=>navigator.navigate('Home')}
+                onPress={()=>{
+                    reseting()
+                    navigator.navigate('Home')
+                }}
             />
             {children}
         </View>

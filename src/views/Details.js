@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     detailsMain:{
         flex:25,
         width:'100%',
-        backgroundColor:global.Secondary1,
+        backgroundColor:global.ColorsPalette.Secondary2,
         alignItems:'center',
         justifyContent:'center',
         padding:30,

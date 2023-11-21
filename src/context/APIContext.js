@@ -1,5 +1,5 @@
 import React,{createContext, useState} from 'react'
-import { View,Text,StyleSheet } from 'react-native'
+import { View,Text,StyleSheet, Alert } from 'react-native'
 import axios,{all} from 'axios'
 import * as global from '../general/globals'
 
@@ -13,6 +13,7 @@ export default function APIProvider({children}){
     const [search,setSearch] = useState(null)
     const [character,setCharacter] = useState(null)
     const [reset,setReset] = useState(true)
+    const [currentPage,setCurrentPage] = useState(0)
 
     const API_URL = 'https://rickandmortyapi.com/api/'
     
@@ -31,7 +32,41 @@ export default function APIProvider({children}){
     }
 
     const searchCharacters = async(name) => {
-        setSearch(await apiGetter(`character/?name=${name}`))
+        let response = (await apiGetter(`character/?name=${name}`))
+        if(!response){
+            setSearch(null)
+            setReset(false)
+            return
+        }
+        let nPages = response.info.pages
+        let results = []
+
+        for(let i=1;i<=nPages;i++){
+            response = (await apiGetter(`character/?name=${name}&page=${i}`)).results
+            response.forEach(r=>{
+                results.push(r)
+            })
+            
+        }
+
+        let pages = []
+        let page = []
+        let nItems = 0
+
+        results.forEach(r => {
+            nItems++
+            page.push(r)
+            if(nItems>=9){
+                pages.push(page)
+                nItems=0
+                page=[]
+            }
+        });
+        if(page.length>0){
+            pages.push(page)
+        }
+        
+        setSearch(pages)
         setReset(false)
     }
 
@@ -40,21 +75,22 @@ export default function APIProvider({children}){
         setReset(false)
     }
 
-    const randomCharacters = async(id) =>{
-        const apiResponse = await apiGetter(`character/`)
-        let response = []
+    const randomCharacters = async() =>{
+        const apiResponse = (await apiGetter(`character/`)).results
+        let response = {random:[]}
         let randomIndex 
 
         for(let i=0; i<9;i++){
-            randomIndex = Math.random()*apiResponse.length()
-            response.push(apiResponse[random])
+            randomIndex = parseInt(Math.random()*apiResponse.length)
+            response.random.push(apiResponse[randomIndex])
         }
-
+        
         setReset(false)
         setSearch(response)
     }
 
     const reseting = () =>{
+        setCurrentPage(0)
         setReset(true)
     }
 
@@ -64,7 +100,9 @@ export default function APIProvider({children}){
             search,
             reset,
             navigator,
+            currentPage,
             reseting,
+            setCurrentPage,
             setNavigator,
             randomCharacters,
             characterById,

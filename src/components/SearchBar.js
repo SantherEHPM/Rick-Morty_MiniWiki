@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { View,Text,StyleSheet,TextInput, Alert } from 'react-native'
+import { View,Text,StyleSheet,TextInput, Alert,Button } from 'react-native'
 import ImageButton from './ImageButton'
 import * as global from '../general/globals'
 import { useAPIContext } from '../context/APIContext'
@@ -32,10 +32,11 @@ const styles = StyleSheet.create({
 
 export default function SearchBar({placeholder,width}){
 
-    const {searchCharacters} = useAPIContext();
+    const {searchCharacters,setCurrentPage,randomCharacters} = useAPIContext();
     const [input,setInput] = useState('');
 
     const handleSearch = () => {
+        setCurrentPage(0)
         searchCharacters(input)
     }
 

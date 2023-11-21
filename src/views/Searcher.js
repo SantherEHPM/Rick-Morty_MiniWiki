@@ -36,7 +36,7 @@ function ImageResponse({source,text}){
 
 export default function Searcher({navigation}){
     
-    const {search,reset} = useAPIContext();
+    const {search,reset,currentPage} = useAPIContext();
 
     const styles = StyleSheet.create({
         body:{

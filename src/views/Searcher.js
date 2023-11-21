@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { View,Text,StyleSheet,TextInput,Image, Button } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View,Text,StyleSheet,TextInput,Image, Button,Alert} from 'react-native'
 import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
-import CharacterCard from '../components/CharacterCard'
-import * as global from '../globals'
 import StylableText from '../components/StylableText'
-import Indexer from '../components/lndexer'
+import CharacterList from '../components/CharacterList'
+import { useAPIContext } from '../context/APIContext'
+import * as global from '../general/globals'
 
 
 function ImageResponse({source,text}){
@@ -35,6 +35,8 @@ function ImageResponse({source,text}){
 
 
 export default function Searcher({navigation}){
+    
+    const {search,reset} = useAPIContext();
 
     const styles = StyleSheet.create({
         body:{
@@ -48,27 +50,13 @@ export default function Searcher({navigation}){
             alignItems:'center'
         }
     })
-    
-    const [searched,setSearched] = useState(true)
-    const [APIInfo,setAPIInfo] = useState(true)
 
     function responses(){
         let response
 
-        if(searched){
-            if(APIInfo){
-                response=(
-                    <View style={{flexWrap:'wrap',flexDirection:'row',gap:4,width:308}}>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'} navigation={navigation}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <CharacterCard source={global.noFoundIcon} name={'Propouse Bot'}/>
-                        <Indexer nPages={4} style={{marginTop:10}}/>
-                    </View>
-                )
+        if(!reset){
+            if(search){
+                response=<CharacterList/>
             }
             else{
                 response=(

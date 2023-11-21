@@ -1,6 +1,6 @@
 import React,{useEffect,useRef} from 'react'
 import { View,Text,StyleSheet,Image,Animated } from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 
 
 

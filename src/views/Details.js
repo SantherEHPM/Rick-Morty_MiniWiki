@@ -1,9 +1,10 @@
 import React from 'react'
 import { View,Text,StyleSheet,Image, Button } from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 import Header from '../components/Header'
 import StylableText from '../components/StylableText'
 import Link from '../components/Link'
+import { useAPIContext } from '../context/APIContext';
 
 const styles = StyleSheet.create({
     header:{
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     },
     img:{
         width:'100%',
-        height:'65%',
+        height:'60%',
         backgroundColor:'#AAA',
         resizeMode:'contain',
         borderTopRightRadius:30,
@@ -38,27 +39,34 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function Details({navigation}){
+export default function Details({}){
+    
+    const {navigator,character} = useAPIContext();
+
     return(
+
         <View style={global.body}>
-            <Header back style={styles.header} navigation={navigation}/>
+            <Header back style={styles.header}/>
+            
             <View style={styles.detailsMain}>
+                {character&&
                 <View style={styles.details}>
                     <Image
                         style={styles.img}
-                        source={global.noFoundIcon}
+                        source={{uri:character.image}}
                     />
                     <View style={styles.info}>
-                        <StylableText large>Nombre</StylableText>
-                        <StylableText medium>Status</StylableText>
-                        <StylableText medium>Especie</StylableText>
-                        <StylableText medium>Genero</StylableText>
-                        <StylableText medium>Ubicacion Actual:</StylableText>
-                        <Link url={'https://music.youtube.com/watch?v=RyeNAYN6MU4&list=RDAMVMWeZRT6Uoc8k'}>
+                        <StylableText large>Nombre:{character.name}</StylableText>
+                        <StylableText medium>Status:{character.status}</StylableText>
+                        <StylableText medium>Especie:{character.species}</StylableText>
+                        <StylableText medium>Genero:{character.gender}</StylableText>
+                        <StylableText medium>Ubicacion Actual:{character.location.name}</StylableText>
+                        <Link url={'https://rickandmorty.fandom.com/wiki/'+character.name}>
                             Más información
                         </Link>
                     </View>
                 </View>
+                }
             </View>
         </View>
     )

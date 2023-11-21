@@ -1,9 +1,11 @@
-import React from 'react'
-import { View,Text,StyleSheet,TextInput } from 'react-native'
+import React,{useEffect, useState} from 'react'
+import { View,Text,StyleSheet,TextInput, Alert } from 'react-native'
 import ImageButton from './ImageButton'
-import * as global from '../globals'
+import * as global from '../general/globals'
+import { useAPIContext } from '../context/APIContext'
 
 const styles = StyleSheet.create({
+
     container:{
         alignItems:'center',
         justifyContent:'center'
@@ -29,13 +31,29 @@ const styles = StyleSheet.create({
 })
 
 export default function SearchBar({placeholder,width}){
+
+    const {searchCharacters} = useAPIContext();
+    const [input,setInput] = useState('');
+
+    const handleSearch = () => {
+        searchCharacters(input)
+    }
+
+
     return(
         <View style={[styles.container,{width:width}]}>
-            <ImageButton source={global.searchIcon} size={40} style={styles.searchButton}/>
+            <ImageButton 
+                source={global.searchIcon} 
+                size={40} 
+                style={styles.searchButton}
+                onPress={handleSearch}
+            />
             <TextInput
                 style={styles.searchBar}
                 placeholder={placeholder}
                 keyboardType='default'
+                onChangeText={setInput}
+                value={input}
             />
         </View>
     )

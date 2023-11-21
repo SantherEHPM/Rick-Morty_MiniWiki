@@ -8,9 +8,13 @@ Proceso de desarrollo
 3. Diseño
     -Realización de mockups
     Figma: https://www.figma.com/file/RDfIRHtYEivssfzPaXoB2g/R%26M-Character-Wiki-v1.0?type=design&node-id=0%3A1&mode=design&t=bCStlUBl9bh0tuAd-1
+    
 4. Desarrollo/Versionamiento
-    -v0.1: Inicializar de componentes (Vistas/Componentes/Contextos)
-    -v0.2: Esquematizar vistas y componentes
+    1. Inicializar de componentes (Vistas/Componentes/Contextos)
+    2. Esquematizar vistas y componentes
+    3. Enrutar vistas
+    4. Integración de api
+
 
 
 Dificultades y dudas:
@@ -20,4 +24,7 @@ Dificultades y dudas:
 
 Facilidades:
 -Creación de componentes
+
+Aprendizaje:
+-Hook useEffect
 

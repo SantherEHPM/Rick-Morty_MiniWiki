@@ -1,6 +1,6 @@
 import React from 'react'
 import { View,Text,StyleSheet,Button, Alert} from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 import StylableButton from './StylableButon'
 
 const styles = StyleSheet.create({

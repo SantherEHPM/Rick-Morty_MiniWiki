@@ -1,6 +1,6 @@
 import React, { Children } from 'react'
 import { View,Text,StyleSheet } from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 import StylableText from './StylableText'
 
 const styles = StyleSheet.create({

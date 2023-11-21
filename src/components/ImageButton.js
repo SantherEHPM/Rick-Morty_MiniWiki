@@ -1,6 +1,6 @@
 import React from 'react'
 import { View,Text,StyleSheet,Image,Touchable, TouchableWithoutFeedback} from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 
 const styles = StyleSheet.create({
     container:{

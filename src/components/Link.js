@@ -1,6 +1,6 @@
 import React,{useCallback} from 'react'
 import { View,Text,StyleSheet,Linking, TouchableHighlight, Button,Alert } from 'react-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 import StylableText from './StylableText';
 
 const styles = StyleSheet.create({

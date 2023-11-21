@@ -1,7 +1,8 @@
-import React from 'react'
-import { View,Text,StyleSheet,Image, TouchableWithoutFeedback} from 'react-native'
-import * as global from '../globals'
+import React, { useEffect } from 'react'
+import { View,Text,StyleSheet,Image, TouchableWithoutFeedback, Alert} from 'react-native'
+import * as global from '../general/globals'
 import StylableText from './StylableText'
+import { useAPIContext } from '../context/APIContext'
 
 const styles = StyleSheet.create({
     container:{
@@ -24,16 +25,24 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function CharacterCard({source,name,id,navigation}){
+export default function CharacterCard({source,name,id}){
+    const {navigator,characterById,character} = useAPIContext()
+
+
+    // useEffect(()=>Alert.alert(character&&JSON.stringify(character))
+    // ,[character])
     return(
             <TouchableWithoutFeedback
-                onPress={()=>navigation.navigate('Details')}
+                onPress={()=>{
+                    characterById(id)
+                    navigator.navigate('Details')
+                }}
             >
                 <View style={styles.container}>
                     
             <Image
                 style={styles.img}
-                source={source}
+                source={{uri:source}}
             />
             <StylableText style={styles.text} white>{name}</StylableText>
                 </View>

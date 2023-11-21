@@ -1,7 +1,7 @@
 import React from 'react'
 import { View,Text,StyleSheet } from 'react-native'
 import { Route,Switch } from 'react-router-native'
-import * as global from '../globals'
+import * as global from '../general/globals'
 
 //Vistas
 import Searcher from '../views/Searcher'
